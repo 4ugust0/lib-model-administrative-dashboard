@@ -8,9 +8,9 @@ Library of components for create a system administrative
 
 # History of components
 
-| Date       | Component         | Description |
-| :--------- | :---------------- | :---------- |
-| 00/00/0000 | name-of-component | NONE        |
+| Date       | Component         | Description                                                                                               |
+| :--------- | :---------------- | :-------------------------------------------------------------------------------------------------------- |
+| 15/07/2023 | Menu - Horizontal | This component is menu horizontal and in the component was also created initial component Avatar the menu |
 
 # Thanks
 
