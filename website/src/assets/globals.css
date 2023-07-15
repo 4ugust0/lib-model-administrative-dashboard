@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose * {
+    margin-top: 4px;
+}
+
+.prose h1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.prose blockquote {
+  padding: 10px;
+  font-size: 30px;
+  background-color: #c4c4c4;
+}
