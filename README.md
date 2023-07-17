@@ -11,6 +11,7 @@ Library of components for create a system administrative
 | Date       | Component         | Description                                                                                               |
 | :--------- | :---------------- | :-------------------------------------------------------------------------------------------------------- |
 | 15/07/2023 | Menu - Horizontal | This component is menu horizontal and in the component was also created initial component Avatar the menu |
+| 17/07/2023 | Pop up Button     | This component is pop up button                                                                           |
 
 # Thanks
 
