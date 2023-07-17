@@ -3,7 +3,7 @@ import images from "../../public/images";
 export function Header() {
   return (
     <header className="flex justify-end w-[97%] max-w-[1124px] py-[21px] px-[20px] bg-[white] shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-[5px]">
-      <div className="flex items-center gap-[14px]">
+      <button className="flex items-center gap-[14px]">
         <div className="leading-[18px]">
           <h2 className="text-[16px] text-[#454546]">John Doe</h2>
           <h3 className="text-[#9d9d9f]">Admin</h3>
@@ -17,7 +17,7 @@ export function Header() {
           />
         </div>
         {/* circle */}
-      </div>
+      </button>
       {/* avatar */}
     </header>
   );
