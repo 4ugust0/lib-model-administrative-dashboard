@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .prose * {
-    margin-top: 4px;
+  margin-top: 4px;
 }
 
 .prose h1 {

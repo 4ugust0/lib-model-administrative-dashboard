@@ -3,7 +3,7 @@ import PopUpButton from "./pop-button";
 import { useState } from "react";
 
 const meta: Meta<typeof PopUpButton> = {
-  title: "popup/popButton",
+  title: "components/popup/popButton",
   component: PopUpButton,
   tags: ["autodocs"],
 };
@@ -26,7 +26,7 @@ export const Primary: Story = {
     function PopUpButton(props: PopUpButtonInterface) {
       return (
         <div
-          className={`${props.clickBoo ? "block" : "hidden"}  ${
+          className={`${props.clickBoo ? "block animate-fadeOut" : "hidden"}  ${
             props.className
           } absolute overflow-hidden bg-[white] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] rounded-lg p-[30px]`}
         >

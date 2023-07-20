@@ -5,7 +5,7 @@ import PopUpButton from "./popups/pop-button";
 import { useState } from "react";
 
 const meta: Meta<typeof Header> = {
-  title: "menu/Header",
+  title: "components/menu",
   tags: ["autodocs"],
   component: Header,
 };
