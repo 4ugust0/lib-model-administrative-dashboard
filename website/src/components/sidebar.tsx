@@ -1,102 +1,145 @@
 import { CaretDown } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
-export default function Sidebar() {
-  const [ObjectData, setObjectData] = useState<ObjectDataModelInterface[]>([]);
-
-  /* This object is a controller for your datas */
-  interface ObjectDataModelInterface {
-    title: string; // Title of your group sidebar
-    navsButton: {
+/* This object is a controller for your datas */
+interface ObjectDataModelInterface {
+  title: string; // Title of your group sidebar
+  navsButton: {
+    icon: string; // Icon of Button
+    title: string; // Title of Button
+    urlSync: string; // Sync this button at a page
+    offSetCategory: boolean;
+    categories?: {
       icon: string; // Icon of Button
       title: string; // Title of Button
       urlSync: string; // Sync this button at a page
-      offSetCategory: boolean;
-      categories?: {
-        icon: string; // Icon of Button
-        title: string; // Title of Button
-        urlSync: string; // Sync this button at a page
-      }[];
     }[];
-  }
-  [];
+  }[];
+}
+[];
 
-  const ObjectDataModel: ObjectDataModelInterface[] = [
-    {
-      title: "Home",
-      navsButton: [
-        {
-          icon: "your-icon",
-          title: "Dashboard",
-          urlSync: "#",
-          offSetCategory: false,
-          categories: [],
-        },
-      ],
-    },
-    {
-      title: "Home",
-      navsButton: [
-        {
-          icon: "your-icon",
-          title: "A",
-          urlSync: "#",
-          offSetCategory: false,
-          categories: [
-            {
-              icon: "",
-              title: "muito obrigado than 3",
-              urlSync: "",
-            },
-          ],
-        },
-        {
-          icon: "your-icon",
-          title: "B",
-          urlSync: "#",
-          offSetCategory: false,
-          categories: [
-            {
-              icon: "",
-              title: "muito obrigado than 2",
-              urlSync: "",
-            },
-          ],
-        },
-        {
-          icon: "your-icon",
-          title: "C",
-          urlSync: "#",
-          offSetCategory: false,
-          categories: [
-            {
-              icon: "",
-              title: "muito obrigado than 1",
-              urlSync: "",
-            },
-          ],
-        },
-      ],
-    },
-  ];
+const objectDataModel: ObjectDataModelInterface[] = [
+  {
+    // Button no-category
+    title: "Home",
+    navsButton: [
+      {
+        icon: "your-icon",
+        title: "Dashboard",
+        urlSync: "#",
+        offSetCategory: false,
+        categories: [],
+      },
+    ],
+  },
+  {
+    title: "Title of Buttons Category",
+    navsButton: [
+      {
+        // Button category
+        icon: "your-icon",
+        title: "Item 1",
+        urlSync: "#",
+        offSetCategory: false,
+        categories: [
+          {
+            icon: "",
+            title: "SubItem 01",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 02",
+            urlSync: "your-url",
+          },
+        ],
+      },
+      {
+        icon: "your-icon",
+        title: "Item 2",
+        urlSync: "#",
+        offSetCategory: false,
+        categories: [
+          {
+            icon: "",
+            title: "SubItem 01",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 02",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 03",
+            urlSync: "your-url",
+          },
+        ],
+      },
+      {
+        icon: "your-icon",
+        title: "Item 3",
+        urlSync: "#",
+        offSetCategory: false,
+        categories: [
+          {
+            icon: "",
+            title: "SubItem 01",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 02",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 03",
+            urlSync: "your-url",
+          },
+          {
+            icon: "",
+            title: "SubItem 04",
+            urlSync: "your-url",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+/* --------------------------------------------------------------------------------- */
+
+export default function Sidebar() {
+  const [objectData, setObjectData] = useState<ObjectDataModelInterface[]>([]);
 
   useEffect(() => {
-    setObjectData(ObjectDataModel);
+    setObjectData(objectDataModel);
   }, []);
 
   const toggleContent = (idGroup: string, idButton: string) => {
-    const updateObjextModel = ObjectDataModel.filter((group) => {
-      if (group.title === idGroup) {
-        const updateNavsButton = group.navsButton.map((button) => {
-          if (button.title === idButton) {
-            return {
-              ...button,
-              offSetCategory: !button.offSetCategory,
-            };
-          }
-        });
-      }
+    setObjectData((prevData) => {
+      return prevData.map((group) => {
+        if (group.title === idGroup) {
+          return {
+            ...group,
+            navsButton: group.navsButton.map((button) => {
+              if (button.title === idButton) {
+                return {
+                  ...button,
+                  offSetCategory: !button.offSetCategory,
+                };
+              }
+              return button;
+            }),
+          };
+        }
+        return group;
+      });
     });
+
+    console.log(objectData);
   };
 
   return (
@@ -114,7 +157,7 @@ export default function Sidebar() {
         {/* logotipo */}
         <hr className="w-full bg-[#c4c4c4] h-[1.5px] opacity-[0.4]" />
         {/* Define map  */}
-        {ObjectData.map((val, index) => (
+        {objectData.map((val, index) => (
           <>
             <div
               key={index}
@@ -140,7 +183,16 @@ export default function Sidebar() {
                       />
                       <div className="w-full flex justify-between items-center">
                         <p className="text-left">{buttonValues.title}</p>
-                        <CaretDown size={24} weight="bold" />
+                        <CaretDown
+                          className={`${
+                            buttonValues.offSetCategory
+                              ? "rotate-[180deg]"
+                              : "rotate-[0deg]"
+                          } duration-300`}
+                          size={24}
+                          weight="bold"
+                        />
+                        {/* Phosphor Icons */}
                       </div>
                     </button>
                   ) : (
