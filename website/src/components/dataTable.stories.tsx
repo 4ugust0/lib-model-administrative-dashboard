@@ -471,40 +471,42 @@ export const Primary: Story = {
           </button>
         </div>
         {/* search area */}
-        <table className="text-left table-fixed w-full">
-          <thead>
-            <tr>
-              {columns.map((val, index) => (
-                <>
-                  <th
-                    key={index}
-                    className={`p-[7px] border border-[2px] border-black ${
-                      val.offSet ? "" : "hidden"
-                    }`}
-                  >
-                    {val.headerName}
-                  </th>
-                </>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {listingItems.map((row, index) => (
-              <tr key={index}>
-                {columns.map((col) => (
-                  <td
-                    className={`p-[7px] border border-[2px] border-black ${
-                      col.offSet ? "" : "hidden"
-                    }`}
-                    key={col.field}
-                  >
-                    {row[col.field] ? row[col.field] : "undefined"}
-                  </td>
+        <div className="overflow-y-auto w-full h-[200px] border border-[2px] border-black">
+          <table className="text-left table-fixed w-full">
+            <thead className="sticky top-0 bg-white shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] ">
+              <tr>
+                {columns.map((val, index) => (
+                  <>
+                    <th
+                      key={index}
+                      className={`p-[7px] border border-[1px] border-black ${
+                        val.offSet ? "" : "hidden"
+                      }`}
+                    >
+                      {val.headerName}
+                    </th>
+                  </>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {listingItems.map((row, index) => (
+                <tr key={index}>
+                  {columns.map((col) => (
+                    <td
+                      className={`p-[7px] border border-[1px] border-black ${
+                        col.offSet ? "" : "hidden"
+                      }`}
+                      key={col.field}
+                    >
+                      {row[col.field] ? row[col.field] : "undefined"}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className="flex items-center gap-[10px] text-center py-[20px] justify-end">
           <div className="flex items-center gap-[10px]">
             Colunas por página:
