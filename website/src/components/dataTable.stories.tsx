@@ -1,17 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
-import DataTable from "./dataTable";
 import * as React from "react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { filter } from "lodash";
 
-const meta: Meta<typeof DataTable> = {
+const meta: Meta = {
   title: "components/Data Table",
-  component: DataTable,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof DataTable>;
+type Story = StoryObj;
 
 export const Primary: Story = {
   render: () => {

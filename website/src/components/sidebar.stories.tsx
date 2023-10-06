@@ -1,17 +1,15 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Sidebar from "./sidebar";
 import { useState } from "react";
 import { useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 
-const meta: Meta<typeof Sidebar> = {
+const meta: Meta = {
   title: "components/sidebar",
-  component: Sidebar,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof Sidebar>;
+type Story = StoryObj;
 
 export const Primary: Story = {
   render: () => {
@@ -159,8 +157,8 @@ export const Primary: Story = {
 
     return (
       <>
-        <section className="flex flex-col gap-[5px] w-[257px] bg-[white] h-[100vh] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
-          <div className="p-[10px] py-[30px]">
+        <section className=" flex flex-col gap-[5px] w-[257px] bg-[white] h-[100vh] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
+          <div className=" bg-white p-[10px] py-[30px]">
             <a href="#">
               <img
                 className=" mx-auto w-[162px] h-[62px] bg-[#c4c4c4]"
@@ -172,11 +170,12 @@ export const Primary: Story = {
           {/* logotipo */}
           <hr className="w-full bg-[#c4c4c4] h-[1.5px] opacity-[0.4]" />
           {/* Define map  */}
+          <div className="overflow-auto pb-[30px]">
           {objectData.map((val, index) => (
             <>
               <div
                 key={index}
-                className="mt-[20px] px-[20px] flex flex-col gap-[10px]"
+                className=" mt-[10px] px-[20px] flex flex-col gap-[10px]"
               >
                 <h1 className="text-[#898989] font-[600] text-[16px]">
                   {val.title}
@@ -266,10 +265,9 @@ export const Primary: Story = {
                   </>
                 ))}
               </div>
-
-              <hr className="w-full bg-[#c4c4c4] h-[1.5px] opacity-[0.7]" />
             </>
           ))}
+          </div>
           {/* wrapper-elements-group */}
         </section>
       </>
